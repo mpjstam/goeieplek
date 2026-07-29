@@ -33,4 +33,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /domains/studiostam.nl/private_html/goeieplek/
+          server-dir: /domains/studiostam.nl/public_html/goeieplek/
