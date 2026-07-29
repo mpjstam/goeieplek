@@ -646,3 +646,99 @@ main {
   background: #f6f8fa;
   color: #57606a;
 }
+
+/* Mobile Responsive + Bottom Sheet */
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 75vh;
+    max-height: 75vh;
+    border-right: none;
+    border-top: 1px solid #d0d7de;
+    border-radius: 12px 12px 0 0;
+    background: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 100;
+    padding-top: 0.5rem;
+  }
+
+  .app.sheet-open .sidebar {
+    transform: translateY(0);
+  }
+
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar h1 {
+    margin: 0;
+  }
+
+  .sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: #d0d7de;
+    border-radius: 2px;
+    margin: 0 auto 0.75rem;
+  }
+
+  .sheet-close-btn {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .sheet-close-btn {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #57606a;
+      padding: 0.25rem;
+    }
+
+    .sheet-close-btn:hover {
+      color: #1f2328;
+    }
+  }
+
+  .sheet-open-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #d0d7de;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .sheet-open-btn:active {
+    background: #f6f8fa;
+  }
+
+  .app.sheet-open .sheet-open-btn {
+    display: none;
+  }
+
+  main {
+    height: 100%;
+  }
+}

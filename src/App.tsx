@@ -24,6 +24,7 @@ function formatDuration(seconds: number) {
 
 export default function App() {
   const [mode, setMode] = useState<Mode>('route')
+  const [sheetOpen, setSheetOpen] = useState(false)
 
   const [waypoints, setWaypoints] = useState<Waypoint[]>([])
   const [route, setRoute] = useState<RouteResult | null>(null)
@@ -140,9 +141,16 @@ export default function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app${sheetOpen ? ' sheet-open' : ''}`}>
       <aside className="sidebar">
-        <h1>Reisplanner</h1>
+        <div className="sidebar-header">
+          <h1>Reisplanner</h1>
+          <button type="button" className="sheet-close-btn" onClick={() => setSheetOpen(false)} aria-label="Sluit paneel">
+            ✕
+          </button>
+        </div>
+        <div className="sheet-handle" />
+
 
         <div className="mode-tabs">
           <button type="button" className={mode === 'route' ? 'active' : ''} onClick={() => setMode('route')}>
@@ -203,6 +211,9 @@ export default function App() {
           onMapClick={handleMapClick}
           selectedTipId={selectedTipId}
         />
+        <button type="button" className="sheet-open-btn" onClick={() => setSheetOpen(true)} aria-label="Open paneel">
+          ☰
+        </button>
       </main>
     </div>
   )
